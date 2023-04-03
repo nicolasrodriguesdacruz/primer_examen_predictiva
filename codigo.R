@@ -20,13 +20,11 @@ train$Id <- NULL
 train$OverallQual <- as.character(train$OverallQual)
 train$OverallCond <- as.character(train$OverallCond)
 
-
 # Mostrar las medidas de tendencia central de la variable SalePrice
 sale_price_mode <- names(table(train$SalePrice)[table(train$SalePrice) == max(table(train$SalePrice))])
 sale_price_summary <- data.frame(
   measure = c("Mean", "Median", "Mode"),
-  value = c(mean(train$SalePrice), median(train$SalePrice), as.numeric(sale_price_mode))
-)
+  value = c(mean(train$SalePrice), median(train$SalePrice), as.numeric(sale_price_mode)))
 ggplot(sale_price_summary, aes(x = measure, y = value)) +
   geom_bar(stat = "identity", fill = "lightblue", color = "blue") +
   ggtitle("Medidas de tendencia central de SalePrice")
@@ -210,7 +208,7 @@ anova_tab$omegasq[1]
 
 train$OverallQual <- factor(train$OverallQual, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
 
-ggplot(train, aes(x = OverallQual, fill="lightblue")) +
+ggplot(train, aes(x = OverallQual, fill="red")) +
   geom_bar() +
   ggtitle("Distribución de OverallQual")
 
@@ -340,3 +338,5 @@ ggplot(train_filtered, aes(x=SalePrice, fill=BsmtQual)) +
   geom_density(alpha=0.6) +
   labs(title = "Gráfico de densidad de SalePrice por cada categoría de BsmtQual", x = "SalePrice", y = "Densidad") +
   scale_fill_manual(values=c("#69b3a2","#404080","#803030","#CCCC00"))
+
+
